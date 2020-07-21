@@ -7,7 +7,14 @@ void main() {
   ));
 }
 
-class MainCard extends StatelessWidget {
+class MainCard extends StatefulWidget {
+  @override
+  _MainCardState createState() => _MainCardState();
+}
+
+class _MainCardState extends State<MainCard> {
+  int userLevel = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,6 +24,15 @@ class MainCard extends StatelessWidget {
         centerTitle: true,
         backgroundColor:  Colors.grey[850],
         elevation: 0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          setState(() {
+            userLevel += 1;
+          });
+        },
+        child:  Icon(Icons.add),
+        backgroundColor: Colors.grey[800],
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB( 30, 40, 30, 0),
@@ -60,7 +76,7 @@ class MainCard extends StatelessWidget {
              ),
              SizedBox(height: 10),
              Text(
-               '8',
+               '$userLevel',
                style: TextStyle(
                  color: Colors.amberAccent,
                  letterSpacing: 2.0,
